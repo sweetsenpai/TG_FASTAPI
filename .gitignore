@@ -1,4 +1,65 @@
-/.venv/
-*.xml
-/.idea/
-.idea
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Uncomment the next line if you don't want to commit the virtual environment path set by Poetry
+# .venv/
+
+# Virtual environment
+venv/
+.env
+.venv/
+ENV/
+env/
+*.env
+
+# PyCharm
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Pytest
+.cache/
+.pytest_cache/
+
+# MyPy
+.mypy_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+
+# Test output
+nosetests.xml
+test-output/
+
+# Logs
+*.log
+
+# Jupyter
+.ipynb_checkpoints
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
