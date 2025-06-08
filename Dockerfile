@@ -8,7 +8,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
 # Создаем и переходим в рабочую директорию
-WORKDIR /tg_fastapi_project
+WORKDIR /app
 
 # Копируем и устанавливаем Python-зависимости
 COPY ../requirements.txt .

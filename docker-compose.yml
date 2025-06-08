@@ -16,3 +16,18 @@ services:
       retries: 5
       start_period: 30s
       timeout: 5s
+
+  aerich:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    command: >
+      bash -c "
+      aerich migrate &&\
+      aerich upgrade
+      "
+    depends_on:
+      pgdb:
+        condition: service_healthy
