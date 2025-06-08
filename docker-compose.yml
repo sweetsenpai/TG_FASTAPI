@@ -1,5 +1,6 @@
 services:
   pgdb:
+    restart: on-failure
     image: postgres
     environment:
       - POSTGRES_DB=postgres
@@ -33,6 +34,7 @@ services:
 
 
   fastapi:
+    restart: unless-stopped
     build:
       context: .
       dockerfile: Dockerfile
@@ -42,10 +44,29 @@ services:
       - "8000:8000"
     command: >
       bash -c "
-      uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+      uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload-dir app
       "
     depends_on:
       pgdb:
         condition: service_healthy
       aerich:
          condition: service_completed_successfully
+
+  bot:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - "5000:8000"
+    command: >
+      bash -c "
+      python bot/main.py
+      "
+    depends_on:
+      pgdb:
+        condition: service_healthy
+      aerich:
+        condition: service_completed_successfully

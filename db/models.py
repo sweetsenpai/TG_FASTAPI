@@ -16,3 +16,15 @@ class Posts(models.Model):
 
     class Meta:
         table = "posts"
+
+
+class Users(models.Model):
+    """
+    Модель пользователя
+    """
+
+    id = fields.IntField(primary_key=True)
+    #: Email пользователя
+    email = fields.CharField(max_length=256, unique=True)
+    #: Пароль пользователя
+    password = fields.CharField(max_length=256, null=False)
