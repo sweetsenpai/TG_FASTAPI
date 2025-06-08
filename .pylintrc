@@ -1,0 +1,23 @@
+[MASTER]
+ignore = .venv,migrations,__pycache__
+
+[MESSAGES CONTROL]
+disable =
+    C0114,
+    C0115,
+    C0116,
+    W1203,
+    R0903,
+    R0801,
+    E1101,
+    E0213,
+
+[FORMAT]
+max-line-length = 88
+
+[TYPECHECK]
+ignored-modules = fastapi, sqlalchemy, starlette
+
+[REPORTS]
+output-format = colorized
+reports = no
