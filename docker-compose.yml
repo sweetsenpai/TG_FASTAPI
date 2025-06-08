@@ -25,7 +25,6 @@ services:
       - .:/app
     command: >
       bash -c "
-      aerich migrate &&\
       aerich upgrade
       "
     depends_on:
