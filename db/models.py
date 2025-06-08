@@ -7,8 +7,11 @@ class Posts(models.Model):
     """
 
     id = fields.IntField(primary_key=True)
+    #: Название поста
     title = fields.CharField(max_length=256)
-    test = fields.TextField()
+    #: Текст поста
+    text = fields.TextField()
+    #: Дата создания поста
     date_of_creation = fields.DatetimeField(auto_now_add=True)
 
     class Meta:

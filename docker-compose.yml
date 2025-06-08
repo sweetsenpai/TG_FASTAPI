@@ -30,3 +30,22 @@ services:
     depends_on:
       pgdb:
         condition: service_healthy
+
+
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    command: >
+      bash -c "
+      uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+      "
+    depends_on:
+      pgdb:
+        condition: service_healthy
+      aerich:
+         condition: service_completed_successfully
