@@ -11,11 +11,10 @@ __pycache__/
 
 # Virtual environment
 venv/
-.env
 .venv/
 ENV/
 env/
-*.env
+
 
 # PyCharm
 .idea/
