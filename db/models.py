@@ -28,3 +28,10 @@ class Users(models.Model):
     email = fields.CharField(max_length=256, unique=True)
     #: Пароль пользователя
     password = fields.CharField(max_length=256, null=False)
+    #: Пользователь активен
+    is_active = fields.BooleanField(default=True)
+    #: Дата создания акаунта
+    created_at = fields.DatetimeField(auto_now_add=True)
+
+    class Meta:
+        table = "users"

@@ -1,4 +1,4 @@
-from app.schemas import PostCreate, PostUpdate
+from app.schemas.posts import PostCreate, PostUpdate
 from db.models import Posts
 
 

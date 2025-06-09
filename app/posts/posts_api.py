@@ -1,9 +1,16 @@
 from typing import List
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 
-from app.crud import create_post, delete_post, get_all_posts, get_post, update_post
-from app.schemas import PostCreate, PostOut, PostUpdate
+from app.posts.crud import (
+    create_post,
+    delete_post,
+    get_all_posts,
+    get_post,
+    update_post,
+)
+from app.schemas.posts import PostCreate, PostOut, PostUpdate
+from app.security.jwt_auth import get_current_user
 
 posts_router = APIRouter()
 
@@ -28,7 +35,11 @@ async def create(post: PostCreate):
 
 
 @posts_router.patch("/posts/{post_id}", response_model=PostOut, tags=["Posts"])
-async def patch(post_id: int, post_update: PostUpdate):
+async def patch(
+    post_id: int,
+    post_update: PostUpdate,
+    current_user: dict = Depends(get_current_user),
+):
     post = await get_post(post_id)
     if not post:
         raise HTTPException(404, detail="Пост не найден")
@@ -37,7 +48,7 @@ async def patch(post_id: int, post_update: PostUpdate):
 
 
 @posts_router.delete("/posts/{post_id}", tags=["Posts"])
-async def delete(post_id: int):
+async def delete(post_id: int, current_user: dict = Depends(get_current_user)):
     post = await get_post(post_id)
     if not post:
         raise HTTPException(404, detail="Пост не найден")

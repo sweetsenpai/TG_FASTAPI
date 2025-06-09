@@ -3,7 +3,8 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from tortoise.contrib.fastapi import RegisterTortoise
 
-from app.posts_api import posts_router
+from app.posts.posts_api import posts_router
+from app.users.users_api import user_router
 from configs.tortoise_config import TORTOISE_ORM
 
 
@@ -19,3 +20,4 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Тестовое задание", lifespan=lifespan)
 app.include_router(posts_router, prefix="/api")
+app.include_router(user_router)
