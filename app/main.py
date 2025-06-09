@@ -21,6 +21,10 @@ async def lifespan(app: FastAPI):
         yield
 
 
-app = FastAPI(title="Тестовое задание", lifespan=lifespan)
+app = FastAPI(
+    title="Тестовое задание",
+    lifespan=lifespan,
+    description="API админка для телеграм-бота",
+)
 app.include_router(posts_router, prefix="/api")
 app.include_router(auth_router)
