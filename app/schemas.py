@@ -13,7 +13,10 @@ class PostBase(BaseModel):
         example="Мой первый пост",
     )
     text: Optional[str] = Field(
-        None, min_length=1, description="Текст поста", example="Это содержимое поста"
+        None,
+        min_length=1,
+        description="Текст поста",
+        example="Это содержимое поста",
     )
 
     class Config:
@@ -29,7 +32,10 @@ class PostCreate(PostBase):
         example="Мой первый пост",
     )
     text: str = Field(
-        ..., min_length=1, description="Текст поста", example="Это содержимое поста"
+        ...,
+        min_length=1,
+        description="Текст поста",
+        example="Это содержимое поста",
     )
 
 
@@ -39,8 +45,14 @@ class PostUpdate(PostBase): ...
 class PostOut(PostBase):
     id: int = Field(description="Уникальный идентификатор поста", example=1)
     date_of_creation: datetime = Field(
-        description="Дата и время создания поста", example="2025-06-08T12:00:00"
+        description="Дата и время создания поста", example="08.06.2025 15:18"
     )
 
     title: str
     text: str
+
+    class Config:
+        from_attributes = True
+        json_encoders = {
+            datetime: lambda v: v.strftime("%d.%m.%Y %H:%M"),
+        }
