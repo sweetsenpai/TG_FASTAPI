@@ -19,7 +19,12 @@ auth_router = APIRouter(prefix="/auth", tags=["Auth"])
 logger = setup_logger(__name__)
 
 
-@auth_router.post("/register", response_model=UserOut)
+@auth_router.post(
+    "/register",
+    response_model=UserOut,
+    summary="Регистрация",
+    description="Создание новой учетной записи на основе `email` и `password` ",
+)
 async def register_user(user: UserCreate):
     hashed_pwd = hash_password(user.password)
 
@@ -34,7 +39,11 @@ async def register_user(user: UserCreate):
     return user_obj
 
 
-@auth_router.post("/token")
+@auth_router.post(
+    "/token",
+    summary="Получение JWT токенов",
+    description="Эндпоинт для получение `access_token` и `refresh_token`",
+)
 async def login_for_access_token(email: str = Form(...), password: str = Form(...)):
     user = await Users.get_or_none(email=email)
     if not user or not verify_password(password, user.password):
@@ -51,7 +60,7 @@ async def login_for_access_token(email: str = Form(...), password: str = Form(..
     }
 
 
-@auth_router.post("/refresh")
+@auth_router.post("/refresh", summary="Обновление access_token")
 async def get_refresh_token(
     credentials: HTTPAuthorizationCredentials = Security(bearer_scheme),
 ):
