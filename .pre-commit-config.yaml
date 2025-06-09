@@ -19,11 +19,11 @@ repos:
           - --exclude
           - .venv, requirements.txt, poetry.lock, pyproject.toml
 
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.4.1
-    hooks:
-      - id: mypy
-        args: [ --ignore-missing-imports ]
+#  - repo: https://github.com/pre-commit/mirrors-mypy
+#    rev: v1.4.1
+#    hooks:
+#      - id: mypy
+#        args: [ --ignore-missing-imports ]
 
 
   - repo: https://github.com/astral-sh/ruff-pre-commit

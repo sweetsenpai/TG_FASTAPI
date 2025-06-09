@@ -1,5 +1,5 @@
 # Используем официальный образ Python с указанием точной версии
-FROM python:3.13-slim
+FROM python:3.11-slim
 
 # Устанавливаем переменные окружения для оптимизации Python
 ENV PYTHONDONTWRITEBYTECODE=1 \
