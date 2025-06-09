@@ -37,6 +37,7 @@
 - - [security](app/security) - логика работы с JWT
 - - [main](app/main.py) - точка входа проекта
 - - [logger_config](app/logger_config.py) - конфиг для логера
+
 ---
 
 ## Bot
@@ -57,6 +58,7 @@
 - [db](db) - Модели БД
 - [configs](configs) - конфигурация подключения Tortoise ORM + Aerich к PostgreSQL
 - [migrations](migrations) - мигарции
+
 ---
 
 ## Инфраструктура
@@ -67,7 +69,7 @@
 - [pyproject.toml](pyproject.toml)
 - [requirements.txt](requirements.txt)
 - [.env](.env)
--
+
 ---
 # API
 ![API документация](img/api_docs_main.png)
