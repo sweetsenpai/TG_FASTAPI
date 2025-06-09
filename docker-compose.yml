@@ -34,7 +34,6 @@ services:
 
 
   fastapi:
-#    restart: unless-stopped
     build:
       context: .
       dockerfile: Dockerfile
@@ -53,7 +52,6 @@ services:
          condition: service_completed_successfully
 
   bot:
-    restart: unless-stopped
     build:
       context: .
       dockerfile: Dockerfile
