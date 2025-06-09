@@ -56,3 +56,8 @@ class PostOut(PostBase):
         json_encoders = {
             datetime: lambda v: v.strftime("%d.%m.%Y %H:%M"),
         }
+
+
+class PostMenu(BaseModel):
+    id: int
+    title: str

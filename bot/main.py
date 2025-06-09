@@ -31,7 +31,7 @@ token = os.getenv("BOT_TOKEN")
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
 logger = setup_logger(__name__)
-logger.info("Стартуем бота")
+logger.info("Бот запустился и начал работу")
 
 
 def main() -> None:

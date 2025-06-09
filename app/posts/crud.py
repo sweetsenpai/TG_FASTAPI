@@ -6,6 +6,10 @@ async def get_all_posts():
     return await Posts.all()
 
 
+async def get_posts_menu():
+    return await Posts.all().values("id", "title")
+
+
 async def get_post(post_id: int):
     return await Posts.get_or_none(id=post_id)
 

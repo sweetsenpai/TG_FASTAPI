@@ -18,7 +18,7 @@ async def request_posts_data() -> Optional[List[Dict]]:
     """
     async with httpx.AsyncClient() as client:
         try:
-            response = await client.get(base_post_api)
+            response = await client.get(f"{base_post_api}/menu")
             response.raise_for_status()
             return response.json()
         except Exception as e:

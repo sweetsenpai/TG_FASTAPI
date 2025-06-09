@@ -2,11 +2,13 @@ import os
 from datetime import datetime, timedelta
 from typing import Dict, Optional
 
+from dotenv import load_dotenv
 from fastapi import HTTPException, Security
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 
+load_dotenv()
 # Конфигурация
 SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = os.getenv("ALGORITHM")
